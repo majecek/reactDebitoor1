@@ -29,7 +29,7 @@ class RepoDetail extends Component {
               <TableHeaderColumn >Author</TableHeaderColumn>
               <TableHeaderColumn >Name</TableHeaderColumn>
               <TableHeaderColumn >ID</TableHeaderColumn>
-              <TableHeaderColumn >State</TableHeaderColumn>
+              <TableHeaderColumn >Status</TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody displayRowCheckbox={false} showRowHover>
