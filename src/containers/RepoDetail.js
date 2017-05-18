@@ -8,12 +8,12 @@ import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowCol
 class RepoDetail extends Component {
 
   componentWillMount () {
-    const repoName = `${this.props.params.owner}/${this.props.params.repoId}`
+    const repoName = `${this.props.params.owner}/${this.props.params.repoName}`
     this.props.getPullRequests(repoName)
   }
 
   render () {
-    const { pullRequests } = this.props
+    const {pullRequests} = this.props
 
     if (!pullRequests) {
       return <div>Loading...</div>
@@ -21,7 +21,7 @@ class RepoDetail extends Component {
 
     return (
       <div>
-        <h3>Pull Requests</h3>
+        <h3>Pull Requests for <i>{this.props.params.repoName}</i></h3>
         <button onClick={browserHistory.goBack}>Back</button>
         <Table style={{margin: '10 em', align: 'left'}} onCellClick={this.onRowSelection}>
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
@@ -42,7 +42,6 @@ class RepoDetail extends Component {
 
   renderPullRequests () {
     return this.props.pullRequests.slice(0, 10).map((pullRequest, i) => {
-      console.log(i,pullRequest)
       return (
         <TableRow key={pullRequest.id} selectable={false}>
           <TableRowColumn >{pullRequest.user.login}</TableRowColumn>

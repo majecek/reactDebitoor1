@@ -23,7 +23,6 @@ class SearchBar extends Component {
     event.preventDefault()
 
     this.props.getRepositoryOrderedByStars(this.state.term)
-    // this.setState({term: ''})
   }
 
   render () {
@@ -49,7 +48,7 @@ SearchBar.propTypes = {}
 SearchBar.defaultProps = {}
 
 function mapDispatchToProps (dispatch) {
-  return bindActionCreators({ getRepositoryOrderedByStars }, dispatch)
+  return bindActionCreators({getRepositoryOrderedByStars}, dispatch)
 }
 
 export default connect(null, mapDispatchToProps)(SearchBar)
