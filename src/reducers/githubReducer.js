@@ -23,7 +23,7 @@ console.log(action.type)
       }
 
     case PULL_REQUESTS:
-      console.log(action.payload.data[0].user.login)
+      // console.log(action.payload.data[0].user.login)
       return {
         ...state,
         pullRequests: action.payload.data

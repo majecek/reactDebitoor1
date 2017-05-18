@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table'
 import { getRepositoryOrderedByStars } from './../reducers/githubReducer'
 import { Link } from 'react-router'
+import SearchBar from './SearchBar'
 
 class Overview extends Component {
 
@@ -23,6 +24,7 @@ class Overview extends Component {
 
     return (
       <div>
+        <SearchBar/>
         <Table style={{margin: '10 em', align: 'left'}} onCellClick={this.onRowSelection}>
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow selectable={false}>

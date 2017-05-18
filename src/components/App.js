@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider"
 import { AppBar} from 'material-ui'
-import SearchBar from './../containers/SearchBar'
+
 
 const container_style = {
   fontFamily: "'Roboto', sans-serif"
@@ -15,7 +15,6 @@ class App extends Component {
       <MuiThemeProvider>
         <div style={container_style}>
           <AppBar title={titleString} showMenuIconButton={false}  />
-          <SearchBar />
           {this.props.children}
         </div>
       </MuiThemeProvider>
