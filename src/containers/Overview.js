@@ -3,12 +3,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table'
-import { getReposOrderedByStars } from './../reducers/githubReducer'
+import { getRepositoryOrderedByStars } from './../reducers/githubReducer'
+import { Link } from 'react-router'
 
 class Overview extends Component {
 
   componentWillMount () {
-    this.props.getReposOrderedByStars()
+    this.props.getRepositoryOrderedByStars()
   }
 
   render () {
@@ -22,42 +23,41 @@ class Overview extends Component {
 
     return (
       <div>
-        <Table style={{margin: '10 em', align: 'left'}}>
+        <Table style={{margin: '10 em', align: 'left'}} onCellClick={this.onRowSelection}>
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow selectable={false}>
               <TableHeaderColumn >Name</TableHeaderColumn>
               <TableHeaderColumn >Stars</TableHeaderColumn>
               <TableHeaderColumn >Watchers</TableHeaderColumn>
               <TableHeaderColumn >Open Issues</TableHeaderColumn>
+              <TableHeaderColumn >Actions</TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody displayRowCheckbox={false} showRowHover>
             {this.renderRepos()}
           </TableBody>
         </Table>
-
-        <ul>
-          {this.renderRepos()}
-        </ul>
-        {repos.items.length}
       </div>
     )
   }
 
   renderRepos () {
     return this.props.repos.items.map(repo => {
-      console.log(repo)
+      // console.log(repo)
       return (
         <TableRow key={repo.id} selectable={false}>
           <TableRowColumn >{repo.name}</TableRowColumn>
           <TableRowColumn >{repo.stargazers_count}</TableRowColumn>
           <TableRowColumn >{repo.watchers_count}</TableRowColumn>
           <TableRowColumn >{repo.open_issues_count}</TableRowColumn>
+          <TableRowColumn ><Link to={"/repo/" + repo.full_name} >more info</Link></TableRowColumn>
         </TableRow>
       )
-
-      // <li key={repo.id} >{repo.name}</li>
     })
+  }
+
+  onRowSelection (e) {
+    console.log('row selection: ', e)
   }
 
 }
@@ -73,7 +73,7 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
-    getReposOrderedByStars
+    getRepositoryOrderedByStars
   }, dispatch)
 }
 
