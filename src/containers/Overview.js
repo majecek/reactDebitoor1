@@ -25,14 +25,14 @@ class Overview extends Component {
     return (
       <div>
         <SearchBar/>
-        <Table style={{margin: '10 em', align: 'left'}} onCellClick={this.onRowSelection}>
+        <Table style={{margin: '10 em', align: 'left'}} >
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow selectable={false}>
               <TableHeaderColumn >Name</TableHeaderColumn>
               <TableHeaderColumn >Stars</TableHeaderColumn>
               <TableHeaderColumn >Watchers</TableHeaderColumn>
               <TableHeaderColumn >Open Issues</TableHeaderColumn>
-              <TableHeaderColumn >Actions</TableHeaderColumn>
+              <TableHeaderColumn >Pull Requests</TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody displayRowCheckbox={false} showRowHover>
@@ -45,21 +45,16 @@ class Overview extends Component {
 
   renderRepos () {
     return this.props.repos.items.map(repo => {
-      // console.log(repo)
       return (
         <TableRow key={repo.id} selectable={false}>
           <TableRowColumn >{repo.name}</TableRowColumn>
           <TableRowColumn >{repo.stargazers_count}</TableRowColumn>
           <TableRowColumn >{repo.watchers_count}</TableRowColumn>
           <TableRowColumn >{repo.open_issues_count}</TableRowColumn>
-          <TableRowColumn ><Link to={"/repo/" + repo.full_name} >more info</Link></TableRowColumn>
+          <TableRowColumn ><Link to={'/repo/' + repo.full_name}>Current PRs</Link></TableRowColumn>
         </TableRow>
       )
     })
-  }
-
-  onRowSelection (e) {
-    console.log('row selection: ', e)
   }
 
 }
