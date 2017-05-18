@@ -1,3 +1,25 @@
+Fun with React
+
+Task
+Create app using React + react-router + redux or React Native  + redux.
+
+Requirements
+- Use Github Rest API https://developer.github.com/v3/
+- On main screen of app show top repositories sorted by stars with number of stars, watchers and open issues.
+- On top of page should be search input with possibility to search by repo name (sort by stars).
+- When pressing on repository item show additional repo information with list of the last 10 pull requests with author, name, number and status.
+
+Bonus points awarded for cover important parts of your code with tests, and if you decide to write it as a React Native app with react-native-router-flux
+
+Good luck,
+
+
+
+###
+---
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
