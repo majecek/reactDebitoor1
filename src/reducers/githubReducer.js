@@ -7,6 +7,7 @@ const URL_REPOS_ORDERED_BY_STARS_PREFIX = 'https://api.github.com/search/reposit
 const URL_REPOS_ORDERED_BY_STARS_POSTFIX = 'stars:%3E1&sort=stars&order=desc'
 const URL_PULL_REQUESTS = 'https://api.github.com/repos/'
 const initialState = {}
+let searchTerm = ''
 
 // REDUCERS
 export default function (state = initialState, action = {}) {
@@ -30,7 +31,7 @@ export default function (state = initialState, action = {}) {
 }
 
 // ACTIONS
-export function getRepositoryOrderedByStars (term) {
+export function getRepositoryOrderedByStars (term = searchTerm) {
   let URL = ''
   if (term) {
     URL = `${URL_REPOS_ORDERED_BY_STARS_PREFIX}${term}?${URL_REPOS_ORDERED_BY_STARS_POSTFIX}`
@@ -38,6 +39,7 @@ export function getRepositoryOrderedByStars (term) {
     URL = `${URL_REPOS_ORDERED_BY_STARS_PREFIX}${URL_REPOS_ORDERED_BY_STARS_POSTFIX}`
   }
   const request = axios.get(`${URL}`)
+  searchTerm = term
 
   return {
     type: REPOS_ORDERED_BY_STARS,
