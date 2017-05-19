@@ -4,6 +4,7 @@
   "private": true,
   "devDependencies": {
     "enzyme": "2.8.0",
+    "eslint": "^3.19.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-config-standard-react": "^5.0.0",
     "eslint-plugin-import": "^2.2.0",
