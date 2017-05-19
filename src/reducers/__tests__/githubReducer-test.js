@@ -14,7 +14,6 @@ describe('github reducers', () => {
       reducer(undefined, {})
     ).toEqual(
       {
-        searchTerm: '',
         repos: []
       }
     )

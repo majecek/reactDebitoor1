@@ -4,12 +4,10 @@ import C from '../constants'
 // ACTION TYPES
 const LOAD_REPOS_ORDERED_BY_STARS = 'REPOS_ORDERED_BY_STARS'
 const LOAD_REPOS_ORDERED_BY_STARS_FAIL = 'LOAD_REPOS_ORDERED_BY_STARS_FAIL'
-const SET_SEARCH_TERM = 'SET_SEARCH_TERM'
 const PULL_REQUESTS = 'PULL_REQUESTS'
 const PULL_REQUESTS_FAIL = 'PULL_REQUESTS_FAIL'
 
 const initialState = {
-  searchTerm: '',
   repos: []
 }
 
@@ -46,7 +44,8 @@ export function getRepositoryOrderedByStars (term) {
       .then(response => {
         dispatch({
           type: LOAD_REPOS_ORDERED_BY_STARS,
-          payload: response.data.items
+          payload: response.data.items,
+          searchTerm: term
         })
       })
       .catch(error => {
