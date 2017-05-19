@@ -46,12 +46,12 @@ class Home extends Component {
   }
 
   renderRepos () {
-    return this.props.repos.map(repo => <GitRepoItem repo={repo} key={repo.id} />)
+    return this.props.repos.items.map(repo => <GitRepoItem repo={repo} key={repo.id} />)
   }
 }
 
 Home.propTypes = {
-  repos: PropTypes.array,
+  repos: PropTypes.object,
   getRepositoryOrderedByStars: PropTypes.func.isRequired
 }
 // Home.defaultProps = {}
