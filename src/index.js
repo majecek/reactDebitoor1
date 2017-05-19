@@ -4,15 +4,7 @@ import { Provider } from 'react-redux'
 import { Router, browserHistory } from 'react-router'
 import routes from './routes'
 import store from './store'
-import injectTapEventPlugin from 'react-tap-event-plugin'
 import './index.css'
-
-/**
- * Material UI requirement
- * Needed for onTouchTap
- * more info - http://stackoverflow.com/a/34015469/988941
- */
-injectTapEventPlugin()
 
 ReactDOM.render(
 
