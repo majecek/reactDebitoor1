@@ -10,7 +10,7 @@ import GitRepoItem from './components/GitRepoItem/GitRepoItem'
 class Home extends Component {
 
   componentWillMount () {
-    this.props.getRepositoryOrderedByStars()
+    this.props.getRepositoryOrderedByStars(this.props.searchTerm)
   }
 
   render () {
@@ -52,13 +52,15 @@ class Home extends Component {
 
 Home.propTypes = {
   repos: PropTypes.array,
-  getRepositoryOrderedByStars: PropTypes.func.isRequired
+  getRepositoryOrderedByStars: PropTypes.func.isRequired,
+  searchTerm: PropTypes.string
 }
 // Home.defaultProps = {}
 
 function mapStateToProps (state) {
   return {
-    repos: state.github.repos
+    repos: state.github.repos,
+    searchTerm: state.github.searchTerm
   }
 }
 

@@ -6,8 +6,10 @@ const LOAD_REPOS_ORDERED_BY_STARS = 'REPOS_ORDERED_BY_STARS'
 const LOAD_REPOS_ORDERED_BY_STARS_FAIL = 'LOAD_REPOS_ORDERED_BY_STARS_FAIL'
 const PULL_REQUESTS = 'PULL_REQUESTS'
 const PULL_REQUESTS_FAIL = 'PULL_REQUESTS_FAIL'
+const SET_SEARCHTERM = 'SET_SEARCHTERM'
 
 const initialState = {
+  searchTerm: '',
   repos: []
 }
 
@@ -29,6 +31,11 @@ export default function (state = initialState, action = {}) {
         ...state,
         pullRequests: action.payload
       }
+    case SET_SEARCHTERM:
+      return {
+        ...state,
+        searchTerm: action.searchTerm
+      }
     default:
       return state
   }
@@ -37,8 +44,8 @@ export default function (state = initialState, action = {}) {
 // ACTIONS
 export function getRepositoryOrderedByStars (term) {
   const url = term
-  ? `${C.URL_REPOS_ORDERED_BY_STARS_PREFIX}${term}?${C.URL_REPOS_ORDERED_BY_STARS_POSTFIX}`
-  : `${C.URL_REPOS_ORDERED_BY_STARS_PREFIX}${C.URL_REPOS_ORDERED_BY_STARS_POSTFIX}`
+    ? `${C.URL_REPOS_ORDERED_BY_STARS_PREFIX}${term}?${C.URL_REPOS_ORDERED_BY_STARS_POSTFIX}`
+    : `${C.URL_REPOS_ORDERED_BY_STARS_PREFIX}${C.URL_REPOS_ORDERED_BY_STARS_POSTFIX}`
   return dispatch => {
     axios.get(url)
       .then(response => {
@@ -75,3 +82,8 @@ export function getPullRequests (repoUrl) {
       })
   }
 }
+
+export const setSearchTerm = (searchTerm) => ({
+  type: SET_SEARCHTERM,
+  searchTerm
+})

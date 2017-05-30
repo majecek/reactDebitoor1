@@ -6,7 +6,6 @@ import { getPullRequests } from '../../reducers/githubReducer'
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table'
 
 class RepoDetail extends Component {
-
   componentWillMount () {
     const repoName = `${this.props.params.owner}/${this.props.params.repoName}`
     this.props.getPullRequests(repoName)

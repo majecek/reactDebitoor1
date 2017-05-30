@@ -1,22 +1,19 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { setSearchTerm } from '../../../../reducers/githubReducer'
 import PropTypes from 'prop-types'
 import TextField from 'material-ui/TextField'
 
 class SearchBar extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      term: ''
-    }
-  }
 
   onInputChange = (event) => {
-    this.setState({ term: event.target.value })
+    this.props.setSearchTerm(event.target.value)
   }
 
   onFormSubmit = (event) => {
     event.preventDefault()
-    this.props.getRepositoryOrderedByStars(this.state.term)
+    this.props.getRepositoryOrderedByStars(this.props.searchTerm)
   }
 
   render () {
@@ -26,7 +23,7 @@ class SearchBar extends Component {
           <TextField
             id="searchfield"
             hintText="Search for repo"
-            value={this.state.term}
+            value={this.props.searchTerm}
             onChange={this.onInputChange}
           />
 
@@ -43,4 +40,16 @@ SearchBar.propTypes = {
   getRepositoryOrderedByStars: PropTypes.func
 }
 
-export default SearchBar
+function mapStateToProps (state) {
+  return {
+    searchTerm: state.github.searchTerm
+  }
+}
+
+function mapDispatchToProps (dispatch) {
+  return bindActionCreators({
+    setSearchTerm
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar)
