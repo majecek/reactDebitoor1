@@ -15,7 +15,7 @@ jdk:
   - oraclejdk8
 
 script:
-  - npm test
+  - yarn test
   - sonar-scanner
 
 cache:
