@@ -15,7 +15,7 @@ jdk:
   - oraclejdk8
 
 script:
-  - yarn test
+  - ./node_modules/react-scripts/bin/react-scripts.js test --env=jsdom --coverage
   - sonar-scanner
 
 cache:
