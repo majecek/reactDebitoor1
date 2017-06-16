@@ -37,6 +37,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "./node_modules/react-scripts/bin/react-scripts.js test --env=jsdom --coverage",
+    "coverage": "react-scriptss --env=jsdom --coverage"
     "eject": "react-scripts eject"
   }
 }
