@@ -17,7 +17,8 @@
     "react-addons-test-utils": "^15.5.1",
     "react-scripts": "0.9.5",
     "react-test-renderer": "^15.5.4",
-    "redux-mock-store": "^1.2.3"
+    "redux-mock-store": "^1.2.3",
+    "sonarqube-scanner-node": "^0.0.2"
   },
   "dependencies": {
     "axios": "^0.16.1",
@@ -38,6 +39,7 @@
     "build": "react-scripts build",
     "test": "./node_modules/react-scripts/bin/react-scripts.js test --env=jsdom --coverage",
     "coverage": "react-scripts test --env=jsdom --coverage",
-   "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "sonarqube": "sonarqube-scanner-node"
   }
 }
