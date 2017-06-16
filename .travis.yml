@@ -15,9 +15,10 @@ jdk:
   - oraclejdk8
 
 script:
+  - npm test
   - sonar-scanner
-  - yarn test
 
 cache:
   directories:
     - '$HOME/.sonar/cache'
+    - node_modules
