@@ -9,7 +9,6 @@ addons:
   sonarqube:
     organization: "chowanioksource"
     branches :
-      - develop
       - master
 
 jdk:
