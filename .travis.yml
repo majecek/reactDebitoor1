@@ -15,8 +15,6 @@ jdk:
   - oraclejdk8
 
 script:
-  - yarn test -- --coverage
-  - yarn sonarqube
   - sonar-scanner
 
 cache:
