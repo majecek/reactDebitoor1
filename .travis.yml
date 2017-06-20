@@ -3,7 +3,8 @@ node_js:
  -  "7"
 
 dist: trusty
-sudo: required
+sudo: false
+group: edge  
 
 addons:
   sonarqube:
